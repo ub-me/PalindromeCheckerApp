@@ -5,25 +5,29 @@ public class PalindromeCheckerApp {
         System.out.println("=================================");
         System.out.println("      PALINDROME CHECKER APP     ");
         System.out.println("=================================");
-        System.out.println("Use Case 5 : Stack Method");
+        System.out.println("Use Case 6 : Queue + Stack Method");
 
         String original = "level";
 
+        java.util.Queue<Character> queue = new java.util.LinkedList<>();
         java.util.Stack<Character> stack = new java.util.Stack<>();
 
-        // push characters into stack
-        for(int i = 0; i < original.length(); i++) {
-            stack.push(original.charAt(i));
+        // insert characters
+        for (int i = 0; i < original.length(); i++) {
+            queue.add(original.charAt(i));   // enqueue
+            stack.push(original.charAt(i));  // push
         }
 
-        String reversed = "";
+        boolean isPalindrome = true;
 
-        // pop characters
-        while(!stack.isEmpty()) {
-            reversed = reversed + stack.pop();
+        while (!queue.isEmpty()) {
+            if (queue.remove() != stack.pop()) {
+                isPalindrome = false;
+                break;
+            }
         }
 
-        if(original.equals(reversed)) {
+        if (isPalindrome) {
             System.out.println(original + " is a Palindrome");
         } else {
             System.out.println(original + " is NOT a Palindrome");
