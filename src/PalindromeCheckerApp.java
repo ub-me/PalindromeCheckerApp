@@ -5,23 +5,21 @@ public class PalindromeCheckerApp {
         System.out.println("=================================");
         System.out.println("      PALINDROME CHECKER APP     ");
         System.out.println("=================================");
-        System.out.println("Use Case 6 : Queue + Stack Method");
+        System.out.println("Use Case 7 : Deque Optimized Method");
 
         String original = "level";
 
-        java.util.Queue<Character> queue = new java.util.LinkedList<>();
-        java.util.Stack<Character> stack = new java.util.Stack<>();
+        java.util.Deque<Character> deque = new java.util.ArrayDeque<>();
 
-        // insert characters
+        // insert characters into deque
         for (int i = 0; i < original.length(); i++) {
-            queue.add(original.charAt(i));   // enqueue
-            stack.push(original.charAt(i));  // push
+            deque.addLast(original.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        while (!queue.isEmpty()) {
-            if (queue.remove() != stack.pop()) {
+        while (deque.size() > 1) {
+            if (deque.removeFirst() != deque.removeLast()) {
                 isPalindrome = false;
                 break;
             }
