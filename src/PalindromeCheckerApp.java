@@ -5,29 +5,31 @@ public class PalindromeCheckerApp {
         System.out.println("=================================");
         System.out.println("      PALINDROME CHECKER APP     ");
         System.out.println("=================================");
-        System.out.println("Use Case 9 : Recursive Method");
+        System.out.println("Use Case 10 : Case-Insensitive & Space Ignored");
 
-        String original = "madam";
+        String input = "A man a plan a canal Panama";
 
-        boolean result = isPalindrome(original, 0, original.length() - 1);
+        // normalize string
+        String normalized = input.toLowerCase().replaceAll("\\s+", "");
 
-        if (result) {
-            System.out.println(original + " is a Palindrome");
-        } else {
-            System.out.println(original + " is NOT a Palindrome");
+        boolean isPalindrome = true;
+
+        int start = 0;
+        int end = normalized.length() - 1;
+
+        while (start < end) {
+            if (normalized.charAt(start) != normalized.charAt(end)) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
-    }
 
-    // recursive function
-    static boolean isPalindrome(String str, int start, int end) {
-
-        // base condition
-        if (start >= end)
-            return true;
-
-        if (str.charAt(start) != str.charAt(end))
-            return false;
-
-        return isPalindrome(str, start + 1, end - 1);
+        if (isPalindrome) {
+            System.out.println("\"" + input + "\" is a Palindrome");
+        } else {
+            System.out.println("\"" + input + "\" is NOT a Palindrome");
+        }
     }
 }
