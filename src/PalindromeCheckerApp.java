@@ -1,3 +1,26 @@
+// Service class
+class PalindromeChecker {
+
+    // method to check palindrome
+    public boolean checkPalindrome(String input) {
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+}
+
+
+// Main Application class
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
@@ -5,31 +28,19 @@ public class PalindromeCheckerApp {
         System.out.println("=================================");
         System.out.println("      PALINDROME CHECKER APP     ");
         System.out.println("=================================");
-        System.out.println("Use Case 10 : Case-Insensitive & Space Ignored");
+        System.out.println("Use Case 11 : Object Oriented Method");
 
-        String input = "A man a plan a canal Panama";
+        String input = "level";
 
-        // normalize string
-        String normalized = input.toLowerCase().replaceAll("\\s+", "");
+        // create object of service class
+        PalindromeChecker checker = new PalindromeChecker();
 
-        boolean isPalindrome = true;
+        boolean result = checker.checkPalindrome(input);
 
-        int start = 0;
-        int end = normalized.length() - 1;
-
-        while (start < end) {
-            if (normalized.charAt(start) != normalized.charAt(end)) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
-        }
-
-        if (isPalindrome) {
-            System.out.println("\"" + input + "\" is a Palindrome");
+        if (result) {
+            System.out.println(input + " is a Palindrome");
         } else {
-            System.out.println("\"" + input + "\" is NOT a Palindrome");
+            System.out.println(input + " is NOT a Palindrome");
         }
     }
 }
